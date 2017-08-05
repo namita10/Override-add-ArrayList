@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+
+// this is the new meaning to Add of ArrayList
+
+public class NewArrayList extends ArrayList<Object> {
+	Object[] elements;
+	int size = 0;
+	int pointer = 1;
+
+	public NewArrayList() {
+		size = 10;
+		elements = new Object[size];
+
+	}
+
+	@Override
+	public boolean add(Object e) {
+		// return super.add(e);
+
+		if (pointer > 10) {
+			size = size + 10;
+		}
+
+		if (elements[pointer] == null) {
+			size = pointer;
+			pointer++;
+
+			for (int i = size; i > 0; i--) {
+				elements[i] = elements[i - 1];
+				elements[i - 1] = e;
+				size++;
+			}
+		}
+
+		//
+
+		return true;
+
+	}
+
+	@Override
+	public Object get(int index) {
+
+		return elements[index];
+
+	}
+
+	public void printTHeContentOFtheObject() {
+		System.out.println(elements[0]);
+	}
+}
